@@ -1,9 +1,3 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set number")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -20,39 +14,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = " "
-
 require("lazy").setup({
-  spec = {
-    {
-      "catppuccin/nvim", 
-      name = "catppuccin", 
-      priority = 1000,
-    },
-    {
-      'nvim-telescope/telescope.nvim', tag = '0.1.8',
-      dependencies = { 'nvim-lua/plenary.nvim' },
-    },
-    { "nvim-tree/nvim-web-devicons", opts = {} },
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-},
+  spec = { { import = "plugins" } },
   install = { colorscheme = { "catppuccin" } },
   checker = { enabled = true },
 })
-
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", '<C-p>', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-
-local config = require("nvim-treesitter.configs")
-config.setup({
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "python", "json", "xml", "yaml" },
-  sync_install = true,
-  highlight = { enable = true, },
-  indent = { enable = true, },
-})
-
-require('catppuccin').setup({
-  flavour='mocha',
-})
-vim.cmd.colorscheme "catppuccin"
