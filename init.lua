@@ -44,6 +44,14 @@ local builtin = require("telescope.builtin")
 vim.keymap.set("n", '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
+local config = require("nvim-treesitter.configs")
+config.setup({
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "python", "json", "xml", "yaml" },
+  sync_install = true,
+  highlight = { enable = true, },
+  indent = { enable = true, },
+})
+
 require('catppuccin').setup({
   flavour='mocha',
 })
