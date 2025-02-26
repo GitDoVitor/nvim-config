@@ -21,7 +21,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 
 require("lazy").setup({
   spec = {
@@ -43,6 +42,7 @@ require("lazy").setup({
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", '<C-p>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
 require('catppuccin').setup({
   flavour='mocha',
