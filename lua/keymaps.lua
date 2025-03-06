@@ -33,3 +33,6 @@ vim.keymap.set("n", "<leader><left>", ":vertical resize +20<cr>")
 vim.keymap.set("n", "<leader><right>", ":vertical resize -20<cr>")
 vim.keymap.set("n", "<leader><up>", ":resize +10<cr>")
 vim.keymap.set("n", "<leader><down>", ":resize -10<cr>")
+
+-- comments toggler
+vim.keymap.set({'n', 'v'}, '<leader>/', ':CommentToggle<cr>')
